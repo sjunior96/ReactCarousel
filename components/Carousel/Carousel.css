@@ -55,3 +55,11 @@
 .right-arrow {
   right: 24px;
 }
+
+/* This will hide the controls in touchscreen devices */
+@media (hover: none) and (pointer: coarse) {
+  .left-arrow,
+  .right-arrow {
+    display: none;
+  }
+}
