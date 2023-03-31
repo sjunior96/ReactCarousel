@@ -15,7 +15,7 @@ export default function App() {
       <h1>Hello StackBlitz!</h1>
       <p>Start editing to see some magic happen :)</p>
 
-      <Carousel show={4}>
+      <Carousel show={4} infiniteLoop={true}>
         <div>
           <div style={{ padding: 8 }}>
             <img
