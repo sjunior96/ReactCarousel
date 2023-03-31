@@ -2,7 +2,7 @@ import * as React from 'react';
 import './Carousel.css'; //will be added later
 
 const Carousel = (props) => {
-  const { children } = props;
+  const { children, show } = props;
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [length, setLength] = React.useState(children.length);
   const [touchPosition, setTouchPosition] = React.useState(null);
@@ -13,7 +13,7 @@ const Carousel = (props) => {
   }, [children]);
 
   const next = () => {
-    if (currentIndex < length - 1) {
+    if (currentIndex < length - show) {
       setCurrentIndex((prevState) => prevState + 1);
     }
   };
@@ -64,13 +64,15 @@ const Carousel = (props) => {
           onTouchMove={handleTouchMove}
         >
           <div
-            className="carousel-content"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            className={`carousel-content show-${show}`}
+            style={{
+              transform: `translateX(-${currentIndex * (100 / show)}%)`,
+            }}
           >
             {children}
           </div>
         </div>
-        {currentIndex < length - 1 && (
+        {currentIndex < length - show && (
           <button onClick={next} className="right-arrow">
             &gt;
           </button>
